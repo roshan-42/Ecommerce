@@ -24,11 +24,21 @@ const MainNav = () => {
           <Navigation />
         </div>
         <div className="flex gap-5">
-          <div>
-            <CiShoppingCart />
+          <div className=" relative">
+            <div className="absolute right-0 -top-2 text-[8px] bg-red-500 text-white px-1 rounded-full">
+              0
+            </div>
+            <button>
+              <CiShoppingCart size={30} />
+            </button>
           </div>
-          <div>
-            <CiHeart />
+          <div className="relative">
+            <div className="absolute right-0 -top-2 text-[8px] bg-red-500 text-white px-1 rounded-full">
+              0
+            </div>
+            <button>
+              <CiHeart size={30} />
+            </button>
           </div>
         </div>
         <button onClick={() => setShow(!show)} className=" sm:hidden">

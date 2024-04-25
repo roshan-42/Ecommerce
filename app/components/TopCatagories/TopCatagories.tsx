@@ -10,6 +10,7 @@ import img8 from "@/public/assets/cc.png";
 
 import Image from "next/image";
 import { CiHeart } from "react-icons/ci";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 const TopCatagories = () => {
   const products = [
@@ -60,31 +61,36 @@ const TopCatagories = () => {
         Top Catagories This Week
       </h2>
       <div className="flex flex-wrap  justify-center gap-10 p-5 border  border-1">
-        {products.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col   border gap-20  items-center p-2 w-[15rem] sm:w-[20rem]"
-          >
-            <div className="flex items-center gap-5">
-              <div className="h-32 w-32">
-                <Image src={item.img} alt="" />
+        {products.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className="flex flex-col   border gap-20  items-center p-2 w-[15rem] sm:w-[20rem]"
+            >
+              <div className="flex items-center gap-5">
+                <div className="h-32 w-32">
+                  <Image src={item.img} alt="" />
+                </div>
+                <div className="flex flex-col">
+                  <p className="font-bold p-1 text-sm sm:text-md">
+                    {item.name}
+                  </p>
+                  <p>{item.rate}</p>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <p className="font-bold p-1 text-sm sm:text-md">{item.name}</p>
-                <p>{item.rate}</p>
-              </div>
-            </div>
 
-            <div className="flex items-center gap-2">
-              <button className="bg-black text-white px-3 rounded-l">
-                Add to cart
-              </button>
-              <button className="border border-black border-1 px-2 rounded-l">
-                <CiHeart size={20} />
-              </button>
+              <div className="flex items-center gap-2">
+                <button className="bg-black text-white px-3 rounded-l flex items-center gap-2">
+                  <MdOutlineShoppingCart />
+                  <p>Add to cart</p>
+                </button>
+                <button className="border border-black border-1 px-2 rounded-l">
+                  <CiHeart size={20} />
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
