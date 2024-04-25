@@ -37,7 +37,7 @@ const MainNav = () => {
         <div
           className={`${
             show ? "opacity-0 translate-x-80" : "opacity-100 -translate-x-10"
-          } sm:hidden bg-gray-200 absolute w-full top-10 p-5 transition-all duration-300 ease-in-out`}
+          } sm:hidden bg-gray-200 absolute z-30 w-full top-10 p-5 transition-all duration-300 ease-in-out`}
         >
           <Navigation />
         </div>
