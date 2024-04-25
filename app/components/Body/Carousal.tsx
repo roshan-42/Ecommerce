@@ -45,6 +45,7 @@ const Carousal = () => {
           >
             {images.map((item, index) => (
               <SwiperSlide
+                key={index}
                 data-swiper-autoplay="2000"
                 className=" relative h-48 w-48 md:h-96 md:w-96"
               >

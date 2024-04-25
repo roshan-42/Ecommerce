@@ -27,27 +27,13 @@ const SearchBarNav = () => {
             className="bg-gray-200 ml-7 rounded-md w-[20rem]   "
             aria-label="Static Actions"
           >
-            <DropdownItem className="p-2" key="new">
-              Electronics Devices
-            </DropdownItem>
-            <DropdownItem className="p-2" key="copy">
-              Men's Fashion
-            </DropdownItem>
-            <DropdownItem className="p-2" key="edit">
-              Women's Fashion
-            </DropdownItem>
-            <DropdownItem className="p-2" key="edit">
-              Watches & Accessories
-            </DropdownItem>
-            <DropdownItem className="p-2" key="edit">
-              TV & Home Appliances
-            </DropdownItem>
-            <DropdownItem className="p-2" key="edit">
-              Sports & Outdoor{" "}
-            </DropdownItem>
-            <DropdownItem className="p-2" key="edit">
-              Babies & Toys
-            </DropdownItem>
+            <DropdownItem className="p-2">Electronics Devices</DropdownItem>
+            <DropdownItem className="p-2">Men's Fashion</DropdownItem>
+            <DropdownItem className="p-2">Women's Fashion</DropdownItem>
+            <DropdownItem className="p-2">Watches & Accessories</DropdownItem>
+            <DropdownItem className="p-2">TV & Home Appliances</DropdownItem>
+            <DropdownItem className="p-2">Sports & Outdoor </DropdownItem>
+            <DropdownItem className="p-2">Babies & Toys</DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </div>
