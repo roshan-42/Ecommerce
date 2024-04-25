@@ -29,7 +29,7 @@ const Carousal = () => {
   return (
     <>
       <div className=" md:flex  ">
-        <div className="w-2/3 ">
+        <div className="w-full md:w-2/3  ">
           <Swiper
             className=" "
             spaceBetween={50}
@@ -54,8 +54,8 @@ const Carousal = () => {
           </Swiper>
         </div>
 
-        <div className="flex flex-col gap-2 px-2 h-[35rem] w-full">
-          <div className="h-full relative">
+        <div className="flex flex-col gap-2 px-2  w-full">
+          <div className="h-full relative overflow-hidden  ">
             <Image
               className=""
               layout="fill"
@@ -65,7 +65,7 @@ const Carousal = () => {
             />
           </div>
 
-          <div className="h-full relative">
+          <div className="h-full relative overflow-hidden">
             <Image
               className=""
               layout="fill"
