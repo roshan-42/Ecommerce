@@ -61,7 +61,10 @@ const TopCatagories = () => {
       </h2>
       <div className="flex flex-wrap  justify-center gap-10 p-5 border  border-1">
         {products.map((item, index) => (
-          <div className="flex flex-col   border gap-20  items-center p-2 w-[15rem] sm:w-[20rem]">
+          <div
+            key={index}
+            className="flex flex-col   border gap-20  items-center p-2 w-[15rem] sm:w-[20rem]"
+          >
             <div className="flex items-center gap-5">
               <div className="h-32 w-32">
                 <Image src={item.img} alt="" />
