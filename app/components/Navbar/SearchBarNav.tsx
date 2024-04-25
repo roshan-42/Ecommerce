@@ -53,7 +53,7 @@ const SearchBarNav = () => {
       </div>
       {/* //Searchbar   */}
 
-      <div className=" md:w-96">
+      <div className=" sm:w-[30%]  lg:w-96">
         <div className="relative flex w-full flex-wrap items-stretch">
           <input
             type="search"
