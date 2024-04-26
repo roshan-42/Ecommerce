@@ -1,22 +1,28 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface counter {
-  value: number;
+  value: Number;
 }
 const initialState: counter = {
-  value: 0,
+  value: localStorage?.getItem("items")
+    ? Number(localStorage?.getItem("items"))
+    : 0,
 };
 const CounterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    increment: (state) => {
+    increment: (state: Record<string, any>) => {
+      console.log("typeof state: ", state);
       state.value += 1;
     },
-    decrement: (state) => {
+    decrement: (state: Record<string, any>) => {
       state.value -= 1;
     },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
+    incrementByAmount: (
+      state: Record<string, any>,
+      action: PayloadAction<number>
+    ) => {
       state.value += action.payload;
     },
   },

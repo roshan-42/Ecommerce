@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import img1 from "@/public/assets/projector.jpg";
 import img2 from "@/public/assets/microphone.png";
 import img3 from "@/public/assets/phone1.png";
@@ -10,16 +11,39 @@ import img7 from "@/public/assets/laptop.png";
 import img8 from "@/public/assets/cc.png";
 
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment } from "@/Store/Slices/CounterSlice";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+} from "@/Store/Slices/CounterSlice";
 
 import Image from "next/image";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
 const TopCatagories = () => {
+  const dispatch = useDispatch();
+
+  //   useEffect(() => {
+  //     const storedItems = localStorage.getItem("items");
+  //     if (storedItems) {
+  //       try {
+  //         const parsedItems = JSON.parse(storedItems);
+
+  //         dispatch(incrementByAmount(parsedItems)); // Assuming incrementByAmount is defined in your Redux slice
+  //         console.log("_____________", parsedItems);
+  //       } catch (error) {
+  //         console.error("Error parsing stored items:", error);
+  //       }
+  //     }
+  //   }, []);
+
+  //   function add_items_inlocal() {
+  //     localStorage.setItem("items", Number(count));
+  //   }
+
   const count = useSelector((state: any) => state.counter.value);
 
-  const dispatch = useDispatch();
   const products = [
     {
       img: img1,
@@ -62,6 +86,10 @@ const TopCatagories = () => {
       rate: "65$",
     },
   ];
+
+  useEffect(() => {
+    localStorage.setItem("items", count);
+  }, [count]);
   return (
     <div className="p-5">
       <h2 className="font-bold text-sm sm:text-xl px-10">
@@ -88,11 +116,16 @@ const TopCatagories = () => {
 
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => dispatch(increment())}
+                  onClick={() => {
+                    dispatch(increment());
+
+                    // add_items_inlocal();
+                  }}
                   className="bg-black text-white hover:scale-110   transition-all px-3 rounded-l flex items-center gap-2"
                 >
                   <MdOutlineShoppingCart />
                   <p>Add to cart</p>
+                  <p>{count}</p>
                 </button>
                 <button className="border border-black border-1 px-2 rounded-l hover:scale-110   transition-all">
                   <CiHeart size={20} />
