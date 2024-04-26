@@ -86,9 +86,13 @@ const TopCatagories = () => {
       rate: "65$",
     },
   ];
-
+  let ls: Record<string, any>;
+  //   console.log("++++++++++++++++++", localStorage);
+  if (typeof window !== "undefined") {
+    ls = localStorage;
+  }
   useEffect(() => {
-    localStorage.setItem("items", count);
+    ls.setItem("items", count);
   }, [count]);
   return (
     <div className="p-5">
@@ -125,7 +129,7 @@ const TopCatagories = () => {
                 >
                   <MdOutlineShoppingCart />
                   <p>Add to cart</p>
-                  <p>{count}</p>
+                  {/* <p>{count}</p> */}
                 </button>
                 <button className="border border-black border-1 px-2 rounded-l hover:scale-110   transition-all">
                   <CiHeart size={20} />

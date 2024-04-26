@@ -4,9 +4,10 @@ interface counter {
   value: Number;
 }
 const initialState: counter = {
-  value: localStorage?.getItem("items")
-    ? Number(localStorage?.getItem("items"))
-    : 0,
+  value:
+    typeof window !== "undefined" && localStorage.getItem("items")
+      ? Number(localStorage.getItem("items"))
+      : 0,
 };
 const CounterSlice = createSlice({
   name: "counter",
