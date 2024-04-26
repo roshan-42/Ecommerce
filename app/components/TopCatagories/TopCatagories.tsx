@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import img1 from "@/public/assets/projector.jpg";
 import img2 from "@/public/assets/microphone.png";
@@ -8,11 +9,17 @@ import img6 from "@/public/assets/camera-drone-1.png";
 import img7 from "@/public/assets/laptop.png";
 import img8 from "@/public/assets/cc.png";
 
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment } from "@/Store/Slices/CounterSlice";
+
 import Image from "next/image";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
 const TopCatagories = () => {
+  const count = useSelector((state: any) => state.counter.value);
+
+  const dispatch = useDispatch();
   const products = [
     {
       img: img1,
@@ -80,11 +87,14 @@ const TopCatagories = () => {
               </div>
 
               <div className="flex items-center gap-2">
-                <button className="bg-black text-white px-3 rounded-l flex items-center gap-2">
+                <button
+                  onClick={() => dispatch(increment())}
+                  className="bg-black text-white hover:scale-110   transition-all px-3 rounded-l flex items-center gap-2"
+                >
                   <MdOutlineShoppingCart />
                   <p>Add to cart</p>
                 </button>
-                <button className="border border-black border-1 px-2 rounded-l">
+                <button className="border border-black border-1 px-2 rounded-l hover:scale-110   transition-all">
                   <CiHeart size={20} />
                 </button>
               </div>

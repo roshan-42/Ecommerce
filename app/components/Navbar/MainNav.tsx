@@ -6,8 +6,12 @@ import Link from "next/link";
 import { CiHeart, CiShoppingCart } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 import SearchBarNav from "./SearchBarNav";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment } from "@/Store/Slices/CounterSlice";
 
 const MainNav = () => {
+  const count = useSelector((state: any) => state.counter.value);
+
   const [show, setShow] = useState(true);
 
   return (
@@ -26,7 +30,7 @@ const MainNav = () => {
         <div className="flex gap-5">
           <div className=" relative">
             <div className="absolute right-0 -top-2 text-[8px] bg-red-500 text-white px-1 rounded-full">
-              0
+              {count}
             </div>
             <button>
               <CiShoppingCart size={30} />
