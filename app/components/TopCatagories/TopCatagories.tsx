@@ -23,6 +23,19 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 
 const TopCatagories = () => {
   const dispatch = useDispatch();
+  const addToCart = (item: any) => {
+    dispatch(increment());
+
+    // Retrieve existing cart items from local storage
+    const existingItemsJSON = localStorage.getItem("cartItems");
+    let existingItems = existingItemsJSON ? JSON.parse(existingItemsJSON) : [];
+
+    // Add the new item to the existing items array
+    existingItems.push({ name: item.name, price: item.rate });
+
+    // Save the updated items back to local storage
+    localStorage.setItem("cartItems", JSON.stringify(existingItems));
+  };
 
   //   useEffect(() => {
   //     const storedItems = localStorage.getItem("items");
@@ -120,16 +133,11 @@ const TopCatagories = () => {
 
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => {
-                    dispatch(increment());
-
-                    // add_items_inlocal();
-                  }}
-                  className="bg-black text-white hover:scale-110   transition-all px-3 rounded-l flex items-center gap-2"
+                  onClick={() => addToCart(item)}
+                  className="bg-black text-white hover:scale-110 transition-all px-3 rounded-l flex items-center gap-2"
                 >
                   <MdOutlineShoppingCart />
                   <p>Add to cart</p>
-                  {/* <p>{count}</p> */}
                 </button>
                 <button className="border border-black border-1 px-2 rounded-l hover:scale-110   transition-all">
                   <CiHeart size={20} />
