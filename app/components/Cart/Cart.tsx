@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import SearchBarNav from "../Navbar/SearchBarNav";
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<any>([]);
 
   useEffect(() => {
     // Retrieve cart items from local storage
@@ -17,9 +17,12 @@ const Cart = () => {
     return items.filter((item: any) => item.name === itemName).length;
   };
   const removeItem = (itemName: any) => {
-    const updatedItems = cartItems.filter((item) => item.name !== itemName);
+    const updatedItems = cartItems.filter(
+      (item: any) => item.name !== itemName
+    );
     setCartItems(updatedItems);
-    localStorage.setItem("cartItems", JSON.stringify(updatedItems));
+    typeof window !== "undefined" &&
+      localStorage.setItem("cartItems", JSON.stringify(updatedItems));
   };
 
   const getUniqueItems = (items: any) => {
