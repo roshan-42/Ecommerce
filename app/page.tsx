@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-hidden">
       <MainNav />
       <Body />
     </main>

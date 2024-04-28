@@ -18,12 +18,14 @@ const ProductGrid = () => {
     },
   ];
   return (
-    <div className="flex-wrap flex gap-2 p-5">
-      {images.map((item, index) => (
-        <div key={index} className="h-auto w-auto">
-          <Image src={item.img} alt="" />
-        </div>
-      ))}
+    <div className="flex-wrap flex gap-2 p-5 justify-between  ">
+      <div className="flex flex-col sm:flex sm:flex-row gap-3 border p-3">
+        {images.map((item, index) => (
+          <div key={index} className="">
+            <Image src={item.img} alt="" />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

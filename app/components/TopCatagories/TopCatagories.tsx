@@ -20,6 +20,7 @@ import {
 import Image from "next/image";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import Link from "next/link";
 
 const TopCatagories = () => {
   const dispatch = useDispatch();
@@ -139,6 +140,7 @@ const TopCatagories = () => {
                   <MdOutlineShoppingCart />
                   <p>Add to cart</p>
                 </button>
+
                 <button className="border border-black border-1 px-2 rounded-l hover:scale-110   transition-all">
                   <CiHeart size={20} />
                 </button>

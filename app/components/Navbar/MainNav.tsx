@@ -32,9 +32,11 @@ const MainNav = () => {
             <div className="absolute right-0 -top-2 text-[8px] bg-red-500 text-white px-1 rounded-full">
               {count}
             </div>
-            <button>
-              <CiShoppingCart size={30} />
-            </button>
+            <Link href="/cart">
+              <button>
+                <CiShoppingCart size={30} />
+              </button>
+            </Link>
           </div>
           <div className="relative">
             <div className="absolute right-0 -top-2 text-[8px] bg-red-500 text-white px-1 rounded-full">
