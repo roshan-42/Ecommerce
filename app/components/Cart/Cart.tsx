@@ -80,15 +80,18 @@ const Cart = () => {
   };
   return (
     <div className=" h-screen flex items-center justify-center">
-      <div className="bg-white shadow-xl">
+      <div className="bg-white shadow-xl p-2">
         <div>Your Cart Items</div>
         <div className="bg-gray-400 w-[40%] h-[1px]" />
         <div>
           {getUniqueItems(cartItems).map((item: any, index: any) => (
             <div
-              className="flex-col sm:flex sm:flex-row gap-5 p-4 justify-between"
+              className="flex-col sm:flex sm:flex-row gap-5 p-4 justify-between border "
               key={index}
             >
+              <div className="h-24 w-24">
+                <img src={item.image.src} alt="" />
+              </div>
               <p>Item Name: {item.name}</p>
               <p>
                 <div className="flex gap-5">
@@ -112,9 +115,9 @@ const Cart = () => {
                   </button>
                 </div>
               </p>
-              <p>Item Price: ${item.price}</p>
+              <p>Item Price: {item.price}</p>
               <button
-                className="bg-red-500 text-white px-4 rounded-md"
+                className="bg-red-500 text-white h-fit px-4 rounded-md"
                 onClick={() => removeItem(item.name)}
               >
                 Remove
@@ -122,7 +125,7 @@ const Cart = () => {
             </div>
           ))}
         </div>
-        <button className="bg-orange-400 px-4 rounded-md">Checkout</button>
+        <button className="bg-orange-400 px-4 rounded-md p-1">Checkout</button>
       </div>
     </div>
   );

@@ -32,7 +32,7 @@ const TopCatagories = () => {
     let existingItems = existingItemsJSON ? JSON.parse(existingItemsJSON) : [];
 
     // Add the new item to the existing items array
-    existingItems.push({ name: item.name, price: item.rate });
+    existingItems.push({ image: item.img, name: item.name, price: item.rate });
 
     // Save the updated items back to local storage
     localStorage.setItem("cartItems", JSON.stringify(existingItems));
