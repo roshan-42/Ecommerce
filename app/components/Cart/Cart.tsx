@@ -1,10 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import SearchBarNav from "../Navbar/SearchBarNav";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+} from "@/Store/Slices/CounterSlice";
 const Cart = () => {
+  const dispatch = useDispatch();
   const [cartItems, setCartItems] = useState<any>([]);
-
+  const count = useSelector((state: any) => state.counter.value);
   useEffect(() => {
     // Retrieve cart items from local storage
     const storedItems = localStorage.getItem("cartItems");
@@ -13,10 +19,38 @@ const Cart = () => {
       setCartItems(parsedItems);
     }
   }, []);
+  const decrementFunction = (itemName: any) => {
+    dispatch(decrement());
+    const indexToRemove = cartItems.findIndex(
+      (item: any) => item.name === itemName
+    );
+
+    if (indexToRemove !== -1) {
+      const updatedItems = [...cartItems];
+      updatedItems.splice(indexToRemove, 1);
+      setCartItems(updatedItems);
+      typeof window !== "undefined" &&
+        localStorage.setItem("cartItems", JSON.stringify(updatedItems));
+    }
+  };
+  const incrementFunction = (item: any) => {
+    dispatch(increment());
+    const existingItemsJSON = localStorage.getItem("cartItems");
+    let existingItems = existingItemsJSON ? JSON.parse(existingItemsJSON) : [];
+
+    // Add the new item to the existing items array
+    existingItems.push({ name: item.name, price: item.rate });
+
+    // Save the updated items back to local storage
+    localStorage.setItem("cartItems", JSON.stringify(existingItems));
+    setCartItems([...cartItems, item]);
+  };
+
   const countItemOccurrences = (items: any, itemName: any) => {
     return items.filter((item: any) => item.name === itemName).length;
   };
   const removeItem = (itemName: any) => {
+    dispatch(decrement());
     const updatedItems = cartItems.filter(
       (item: any) => item.name !== itemName
     );
@@ -24,7 +58,14 @@ const Cart = () => {
     typeof window !== "undefined" &&
       localStorage.setItem("cartItems", JSON.stringify(updatedItems));
   };
-
+  let ls: Record<string, any>;
+  //   console.log("++++++++++++++++++", localStorage);
+  if (typeof window !== "undefined") {
+    ls = localStorage;
+  }
+  useEffect(() => {
+    ls.setItem("items", count);
+  }, [count]);
   const getUniqueItems = (items: any) => {
     const uniqueItems: any = [];
     items.forEach((item: any) => {
@@ -50,9 +91,26 @@ const Cart = () => {
             >
               <p>Item Name: {item.name}</p>
               <p>
-                {countItemOccurrences(cartItems, item.name) > 1 && (
-                  <span>({countItemOccurrences(cartItems, item.name)})</span>
-                )}
+                <div className="flex gap-5">
+                  <button
+                    onClick={() => incrementFunction(item)}
+                    className="bg-black text-white px-2 rounded h-fit"
+                  >
+                    +
+                  </button>
+                  {countItemOccurrences(cartItems, item.name) > 0 && (
+                    <span>
+                      <p>Quantity:</p>
+                      {countItemOccurrences(cartItems, item.name)}
+                    </span>
+                  )}
+                  <button
+                    onClick={() => decrementFunction(item.name)}
+                    className="bg-black text-white px-2 rounded h-fit"
+                  >
+                    -
+                  </button>
+                </div>
               </p>
               <p>Item Price: ${item.price}</p>
               <button
