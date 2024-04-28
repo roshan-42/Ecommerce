@@ -26,7 +26,14 @@ const CounterSlice = createSlice({
     ) => {
       state.value += action.payload;
     },
+    decrementByAmount: (
+      state: Record<string, any>,
+      action: PayloadAction<number>
+    ) => {
+      state.value -= action.payload;
+    },
   },
 });
-export const { increment, decrement, incrementByAmount } = CounterSlice.actions;
+export const { increment, decrement, incrementByAmount, decrementByAmount } =
+  CounterSlice.actions;
 export default CounterSlice.reducer;

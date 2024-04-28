@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   decrement,
   increment,
-  incrementByAmount,
+  decrementByAmount,
 } from "@/Store/Slices/CounterSlice";
 const Cart = () => {
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const Cart = () => {
     return items.filter((item: any) => item.name === itemName).length;
   };
   const removeItem = (itemName: any) => {
-    dispatch(decrement());
+    dispatch(decrementByAmount(countItemOccurrences(cartItems, itemName)));
     const updatedItems = cartItems.filter(
       (item: any) => item.name !== itemName
     );
@@ -119,13 +119,18 @@ const Cart = () => {
               <button
                 className="bg-red-500 text-white h-fit px-4 rounded-md"
                 onClick={() => removeItem(item.name)}
+                // onClick={() => {
+                // dispatch(decrementByAmount(2));
+                // }}
               >
                 Remove
               </button>
             </div>
           ))}
         </div>
-        <button className="bg-orange-400 px-4 rounded-md p-1">Checkout</button>
+        <button className="bg-orange-400 px-4 rounded-md p-1 mt-2">
+          Checkout
+        </button>
       </div>
     </div>
   );
