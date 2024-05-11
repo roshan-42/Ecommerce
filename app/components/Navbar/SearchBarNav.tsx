@@ -47,7 +47,7 @@ const SearchBarNav = () => {
       </div>
       {/* //Searchbar   */}
 
-      <div className=" sm:w-[30%]  lg:w-96">
+      <div className="hidden sm:block sm:w-[30%]  lg:w-96">
         <div className="relative flex w-full flex-wrap items-stretch">
           <input
             type="search"
@@ -82,7 +82,7 @@ const SearchBarNav = () => {
       </div>
 
       {/* ================Last button====================== */}
-      <button className="border-black border transition-all ease-in-out hover:bg-black hover:text-white  flex flex-col items-center justify-center px-12 h-12">
+      <button className="border-black border hidden sm:flex transition-all ease-in-out hover:bg-black hover:text-white   flex-col items-center justify-center px-12 h-12">
         <p className="text-sm">Black Friday</p>
         <p className="text-xs">Get 45% Off!</p>
       </button>

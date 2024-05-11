@@ -58,7 +58,7 @@ const MainNav = () => {
           <Navigation />
         </div>
       </div>
-      <div className="hidden sm:block">
+      <div className="">
         <SearchBarNav />
       </div>
     </div>
