@@ -10,6 +10,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineArrowDropDown } from "react-icons/md";
 import { TERipple } from "tw-elements-react";
 import { FaSearch } from "react-icons/fa";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const SearchBarNav = () => {
   return (
@@ -27,9 +29,15 @@ const SearchBarNav = () => {
             className="bg-gray-200 ml-7 rounded-md w-[20rem]   "
             aria-label="Static Actions"
           >
-            <DropdownItem className="p-2">Electronics Devices</DropdownItem>
-            <DropdownItem className="p-2">Men's Fashion</DropdownItem>
-            <DropdownItem className="p-2">Women's Fashion</DropdownItem>
+            <DropdownItem href="#electronic" className="p-2">
+              <Link href="/electronics">Electronics Devices</Link>
+            </DropdownItem>
+            <DropdownItem className="p-2">
+              <Link href="/mens">Men's Fashion</Link>
+            </DropdownItem>
+            <DropdownItem className="p-2">
+              <Link href="/women">Women's Fashion</Link>
+            </DropdownItem>
             <DropdownItem className="p-2">Watches & Accessories</DropdownItem>
             <DropdownItem className="p-2">TV & Home Appliances</DropdownItem>
             <DropdownItem className="p-2">Sports & Outdoor </DropdownItem>
