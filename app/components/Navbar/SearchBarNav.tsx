@@ -12,8 +12,10 @@ import { TERipple } from "tw-elements-react";
 import { FaSearch } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const SearchBarNav = () => {
+  const router = useRouter();
   return (
     <div className="border flex justify-between h-20 items-center px-10">
       <div>
@@ -33,7 +35,12 @@ const SearchBarNav = () => {
               <Link href="/electronics">Electronics Devices</Link>
             </DropdownItem>
             <DropdownItem className="p-2">
-              <Link href="/mens">Men's Fashion</Link>
+              <div
+                onClick={() => router.push("/mens")}
+                className="cursor-pointer"
+              >
+                Men's Fashion
+              </div>
             </DropdownItem>
             <DropdownItem className="p-2">
               <Link href="/women">Women's Fashion</Link>
@@ -82,7 +89,7 @@ const SearchBarNav = () => {
       </div>
 
       {/* ================Last button====================== */}
-      <button className="border-black border hidden sm:flex transition-all ease-in-out hover:bg-black hover:text-white   flex-col items-center justify-center px-12 h-12">
+      <button className="border-black border hidden sm:block transition-all ease-in-out hover:bg-black hover:text-white   flex-col items-center justify-center px-12 h-12">
         <p className="text-sm">Black Friday</p>
         <p className="text-xs">Get 45% Off!</p>
       </button>
