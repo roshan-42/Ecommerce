@@ -32,7 +32,10 @@ const Electronics = () => {
       <MainNav />
       <div className="flex flex-wrap gap-4 p-5 items-center justify-center lg:justify-start">
         {data?.map((item: any, index: any) => (
-          <div className="flex flex-col border gap-20 items-center p-2 w-[15rem] sm:w-[20rem]">
+          <div
+            key={1}
+            className="flex flex-col border gap-20 items-center p-2 w-[15rem] sm:w-[20rem]"
+          >
             <div className="flex flex-col items-center gap-5">
               <div className="h-48 w-48  relative">
                 <Image
